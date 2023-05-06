@@ -132,11 +132,11 @@ for(i in seq_along(g_test))
 
 ## ----intro_LL_surface_plot, out.width='50%', fig.dim=c(5, 5), fig.align='center'----
 # plot the likelihood surface
-plot(g_test, asp=2, main='log-likelihood surface', ylab=names(p_nm)[1], xlab=names(p_nm)[2])
+plot(g_test, asp=2, main='log-likelihood surface', ylab=names(p_nm)[1], xlab=names(p_nm)[2], reset=FALSE)
 
 # highlight the MLE
 i_best = which.max(g_test[])
-points(p_all[i_best,'x'], p_all[i_best,'y'], cex=2)
+points(p_all[i_best,'x'], p_all[i_best,'y'], col='white', cex=1.5, lwd=1.5)
 
 ## ----intro_LL_surface_expected------------------------------------------------
 # print the true values
@@ -286,9 +286,13 @@ g_uk_orig = exp(g_uk + g_uk_var/2)
 # points on original scale
 pts_orig = meuse_sf[['soils']]['zinc']
 
-# full plot
+# prediction plot
 zlim = range(exp(g), na.rm=TRUE)
-sk_plot(g_uk_orig, zlab='zinc (ppm)', main='[zinc] predictions and observations', cex=1.5, zlim=zlim)
+plot(g_uk_orig, zlab='zinc (ppm)', main='[zinc] predictions and observations', cex=1.5, zlim=zlim)
+plot(meuse_sf[['river_line']], add=TRUE)
+
+# full plot
+plot(g_uk_orig, zlab='zinc (ppm)', main='[zinc] predictions and observations', cex=1.5, zlim=zlim, reset=FALSE)
 plot(meuse_sf[['river_line']], add=TRUE)
 
 # overlay observation points

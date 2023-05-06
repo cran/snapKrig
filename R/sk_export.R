@@ -84,7 +84,12 @@ sk_export = function(g, template='terra')
 
     # reorder values then write to cells
     idx_reorder = t(matrix(seq_along(g), dim(g)))
-    r_out = terra::init(r_out, as.matrix(g)[idx_reorder])
+    idx_write = seq_along(idx_reorder)
+    if(!is_multi) return( terra::init(r_out, as.matrix(g)[idx_reorder]) )
+    for(i in seq(n_layer)) terra::set.values(r_out,
+                                             cells = idx_write,
+                                             values = g[c(idx_reorder),i],
+                                             layer = i)
     return(r_out)
   }
 
@@ -517,8 +522,8 @@ sk_coords = function(g, out='matrix', corner=FALSE, na_omit=FALSE, quiet=FALSE)
   if( !quiet )
   {
     n_get = length(idx_get)
-    msg_get = ifelse(length(g) == n_get, 'all', paste(n_get, 'of'))
-    cat(paste('processing', msg_get, length(g), 'grid points...\n'))
+    msg_get = ifelse(length(g) == n_get, '', paste(n_get, 'of'))
+    cat(paste('processing', paste0(msg_get, length(g)), 'grid points...\n'))
   }
 
   # compute the coordinates
