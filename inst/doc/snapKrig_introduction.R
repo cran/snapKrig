@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -213,7 +213,7 @@ meuse_sf = get_meuse()
 # extract the logarithm of the zinc concentration as sf points
 pts = meuse_sf[['soils']]['log_zinc']
 
-## ----meuse_source_plot, out.width='50%', fig.dim=c(5,5), fig.align='center'----
+## ----meuse_source_plot, out.width='50%', fig.dim=c(5,5), fig.align='center', results='hide'----
 # set up a common color palette (this is the default in snapKrig)
 .pal = function(n) { hcl.colors(n, 'Spectral', rev=TRUE) }
 
@@ -221,6 +221,9 @@ pts = meuse_sf[['soils']]['log_zinc']
 plot(pts, pch=16, reset=FALSE, pal=.pal, key.pos=1, main='Meuse log[zinc]')
 plot(meuse_sf[['river_poly']], col='lightblue', border=NA, add=TRUE)
 plot(st_geometry(pts), pch=1, add=TRUE)
+
+# reset the plot device for next time
+dev.off()
 
 ## ----meuse_snap_default-------------------------------------------------------
 # snap points with default settings
@@ -235,9 +238,7 @@ summary(g)
 
 ## ----meuse_snapped_plot, out.width='50%', fig.dim=c(5,5), fig.align='center'----
 # plot gridded version using the snapKrig package
-plot(g, zlab='log(ppb)', main='snapped Meuse log[zinc] data')
-plot(meuse_sf[['river_poly']], col='lightblue', border=NA, add=TRUE)
-
+plot(g, zlab='log(ppb)', main='snapped Meuse log[zinc] data', reset = FALSE)
 
 ## ----meuse_make_river_dist----------------------------------------------------
 # measure distances for every point in the grid
@@ -251,7 +252,7 @@ summary(X)
 
 ## ----meuse_make_x_plot, out.width='50%', fig.dim=c(5,5), fig.align='center'----
 # plot the result
-plot(X, zlab='distance\n(scaled)', main='distance to river covariate')
+plot(X, zlab='distance\n(scaled)', main='distance to river covariate', reset=FALSE)
 plot(meuse_sf[['river_line']], add=TRUE)
 
 ## ----meuse_fit_uk-------------------------------------------------------------
@@ -268,14 +269,13 @@ g_uk = sk_cmean(g, fit_result_uk, X)
 
 ## ----meuse_pred_uk_plot, out.width='50%', fig.dim=c(5,5), fig.align='center'----
 plot(g_uk, zlab='log[zinc]', main='universal kriging predictions')
-plot(meuse_sf[['river_line']], add=TRUE)
 
 ## ----meuse_var_uk-------------------------------------------------------------
 # compute conditional mean and variance
 g_uk_var = sk_cmean(g, fit_result_uk, X, what='v', quiet=TRUE)
 
-## ----meuse_var_uk_plot, out.width='50%', fig.dim=c(5,5), fig.align='center'----
-plot(sqrt(g_uk_var), zlab='log[zinc]', main='universal kriging standard error')
+## ----meuse_var_uk_plot, out.width='100%', fig.dim=c(10,10), fig.align='center'----
+plot(sqrt(g_uk_var), reset=FALSE, zlab='log[zinc]', main='universal kriging standard error')
 plot(meuse_sf[['river_line']], add=TRUE)
 plot(st_geometry(pts), pch=1, add=TRUE)
 
@@ -286,13 +286,9 @@ g_uk_orig = exp(g_uk + g_uk_var/2)
 # points on original scale
 pts_orig = meuse_sf[['soils']]['zinc']
 
-# prediction plot
+# plot predictions
 zlim = range(exp(g), na.rm=TRUE)
-plot(g_uk_orig, zlab='zinc (ppm)', main='[zinc] predictions and observations', cex=1.5, zlim=zlim)
-plot(meuse_sf[['river_line']], add=TRUE)
-
-# full plot
-plot(g_uk_orig, zlab='zinc (ppm)', main='[zinc] predictions and observations', cex=1.5, zlim=zlim, reset=FALSE)
+plot(g_uk_orig, reset=FALSE, zlab='zinc (ppm)', main='[zinc] predictions and observations', cex=1.5, zlim=zlim)
 plot(meuse_sf[['river_line']], add=TRUE)
 
 # overlay observation points

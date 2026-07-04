@@ -16,7 +16,7 @@ sk_toep_mult(y, z = NULL, x = NULL, idx_obs = NULL, gdim = NULL)
 \item{idx_obs}{integer vector, indices of the observed grid points}
 }
 \value{
-numeric matrix, the product of yzx or yz (if x is NULL)
+numeric matrix, the product \eqn{yzx} or \eqn{yz} (if \code{x} is NULL)
 }
 \description{
 Computes the product \code{y \%*\% z} or \code{y \%*\% z \%*\% x} for symmetric Toeplitz matrices
@@ -78,10 +78,10 @@ max( abs( result_default - sk_toep_mult(y, z=z[idx_obs], x, idx_obs, gdim) ) )
 \seealso{
 base::toeplitz stats::fft
 
-Other internal variance-related functions: 
-\code{\link{sk_corr_mat}()},
-\code{\link{sk_corr}()},
-\code{\link{sk_var_mult}()}
+Other internal variance-related functions:
+\code{\link[=sk_corr]{sk_corr()}},
+\code{\link[=sk_corr_mat]{sk_corr_mat()}},
+\code{\link[=sk_var_mult]{sk_var_mult()}}
 }
 \concept{internal variance-related functions}
 \keyword{internal}

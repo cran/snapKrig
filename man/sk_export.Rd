@@ -24,7 +24,7 @@ Convert "sk" grid to SpatRaster
 if( requireNamespace('raster') ) {
 
 # open example file as RasterLayer
-r_path = system.file('external/rlogo.grd', package='raster')
+r_path = system.file('ex/logo.tif', package='terra')
 r = raster::raster(r_path, band=1)
 g = sk(r)
 
@@ -55,7 +55,7 @@ all.equal(r_from_g, r)
 \seealso{
 sk
 
-Other exporting functions: 
-\code{\link{sk_coords}()}
+Other exporting functions:
+\code{\link[=sk_coords]{sk_coords()}}
 }
 \concept{exporting functions}

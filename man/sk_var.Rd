@@ -30,7 +30,7 @@ sk_var(
 \item{sep}{logical, indicating to return correlation components instead of full covariance matrix}
 }
 \value{
-either matrix \code{V}, or X^T V^{-1} X, or a factorization ('chol' or 'eigen')
+either matrix \code{V}, or \eqn{X^T V^{-1} X}, or a factorization ('chol' or 'eigen')
 }
 \description{
 Computes the covariance matrix V (or one of its factorizations) for the non-NA points
@@ -38,7 +38,7 @@ in sk grid \code{g}, given the model parameters list \code{pars}
 }
 \details{
 By default the output matrix is V. Alternatively, if \code{X} is supplied, the function
-returns the quadratic form X^T V^{-1} X.
+returns the quadratic form \eqn{X^T V^{-1} X}.
 
 When \code{fac_method=='eigen'} the function instead returns the eigen-decomposition of the
 output matrix, and when \code{fac_method=='chol'} its lower triangular Cholesky factor is
@@ -149,11 +149,11 @@ max(abs( sk_var(g, pars, fac_method='eigen')$values - psill*vals_scaled ))
 \seealso{
 sk
 
-Other variance-related functions: 
-\code{\link{sk_GLS}()},
-\code{\link{sk_LL}()},
-\code{\link{sk_cmean}()},
-\code{\link{sk_nLL}()},
-\code{\link{sk_sim}()}
+Other variance-related functions:
+\code{\link[=sk_GLS]{sk_GLS()}},
+\code{\link[=sk_LL]{sk_LL()}},
+\code{\link[=sk_cmean]{sk_cmean()}},
+\code{\link[=sk_nLL]{sk_nLL()}},
+\code{\link[=sk_sim]{sk_sim()}}
 }
 \concept{variance-related functions}

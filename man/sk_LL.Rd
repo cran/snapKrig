@@ -33,9 +33,10 @@ The function evaluates:
 
 \code{-log( 2 * pi ) - ( 1/2 ) * ( log_det + quad_form )},
 
-where \code{log_det} is the logarithm of the determinant of covariance matrix V, and
-\code{quad_form} is z^T V^{-1} z, for the observed response vector z, which is constructed
-by subtracting the trend specified in \code{X} (if any) from the non-NA values in \code{g}.
+where \code{log_det} is the logarithm of the determinant of covariance matrix
+\eqn{V}, and \code{quad_form} is \eqn{z^T V^{-1} z}, for the observed response
+vector \code{z}, which is constructed by subtracting the trend specified in
+\code{X} (if any) from the non-NA values in \code{g}.
 
 If the trend spatially uniform and known, it can be supplied in argument \code{X} as a
 numeric scalar. The default is zero-mean model \code{X=0}, which assumes users has
@@ -209,15 +210,15 @@ LL_result[['n_obs']] - n
 \seealso{
 sk sk_GLS sk_var stats::AIC
 
-Other likelihood functions: 
-\code{\link{sk_nLL}()}
+Other likelihood functions:
+\code{\link[=sk_nLL]{sk_nLL()}}
 
-Other variance-related functions: 
-\code{\link{sk_GLS}()},
-\code{\link{sk_cmean}()},
-\code{\link{sk_nLL}()},
-\code{\link{sk_sim}()},
-\code{\link{sk_var}()}
+Other variance-related functions:
+\code{\link[=sk_GLS]{sk_GLS()}},
+\code{\link[=sk_cmean]{sk_cmean()}},
+\code{\link[=sk_nLL]{sk_nLL()}},
+\code{\link[=sk_sim]{sk_sim()}},
+\code{\link[=sk_var]{sk_var()}}
 }
 \concept{likelihood functions}
 \concept{variance-related functions}

@@ -13,11 +13,11 @@ sk_var_mult(g, pars, fac_method = "eigen", fac = NULL, quad = FALSE, p = -1)
 
 \item{fac_method}{either 'eigen' (the default) or 'chol'}
 
-\item{fac}{factorization of scaled covariance matrix of z (V divided by psill)}
+\item{fac}{factorization of scaled covariance matrix of z (\eqn{V} divided by psill)}
 
 \item{quad}{logical, if TRUE the function returns the quadratic form \code{t(z) \%*\% V_inv \%*\% z}}
 
-\item{p}{numeric, the matrix power of V^p to multiply (ignored when \code{method=='chol'})}
+\item{p}{numeric, the matrix power of \eqn{V^p} to multiply (ignored when \code{method=='chol'})}
 }
 \value{
 numeric matrix
@@ -129,10 +129,10 @@ max( rel_err(sk_var_mult(g_miss_sqrt, pars, p=1/2), out_reference) )
 \seealso{
 sk base::eigen base::chol
 
-Other internal variance-related functions: 
-\code{\link{sk_corr_mat}()},
-\code{\link{sk_corr}()},
-\code{\link{sk_toep_mult}()}
+Other internal variance-related functions:
+\code{\link[=sk_corr]{sk_corr()}},
+\code{\link[=sk_corr_mat]{sk_corr_mat()}},
+\code{\link[=sk_toep_mult]{sk_toep_mult()}}
 }
 \concept{internal variance-related functions}
 \keyword{internal}
