@@ -1,7 +1,7 @@
 Package: snapKrig
 Title: Fast Kriging and Geostatistics on Grids with Kronecker
         Covariance
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: c(
     person("Dean", "Koch", , "deankoch@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-8849-859X"))
@@ -25,11 +25,11 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 NeedsCompilation: no
-Packaged: 2026-07-04 00:06:51 UTC; deaner
+Packaged: 2026-09-30 19:49:20 UTC; deaner
 Author: Dean Koch [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0002-8849-859X>)
 Maintainer: Dean Koch <deankoch@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-07-04 10:10:02 UTC
+Date/Publication: 2026-09-30 23:40:02 UTC

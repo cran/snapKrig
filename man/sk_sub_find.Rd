@@ -24,7 +24,11 @@ dimensions. If no eligible sub-grids are found, the function returns \code{NULL}
 A sub-grid is only eligible if it contains ALL of the non-\code{NA} points in \code{g} and none
 of the \code{NA}s. For example if a single point missing from the sub-grid, or a single non-\code{NA}
 point lies outside the sub-grid, the function will fail to detect any sub-grids and return
-\code{NULL}. If no points are \code{NA}, the function returns indices for the full grid.
+\code{NULL}.
+
+If no points in \code{g} are \code{NA}, the function returns indices for the full grid.
+If \code{g} has <= 1 non-\code{NA} points, the function returns \code{NULL} (1x1 subgrids
+are not supported.)
 
 The returned list contains the following named elements:
 \itemize{
@@ -51,8 +55,8 @@ g_big = sk_rescale(g, down=3)
 plot(g_big)
 print(sk_sub_find(g_big))
 
-# define a smaller sub-grid at random
-spacing = sapply(floor(gdim/10), function(x) 1 + sample.int(x, 1))
+# define a smaller sub-grid
+spacing = c(5, 4)
 gdim_sg = sapply(floor( (gdim - 1) / spacing), function(x) sample.int(x, 1))
 ij_first = sapply(gdim - ( spacing * gdim_sg ), function(x) sample.int(x, 1))
 

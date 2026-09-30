@@ -1,11 +1,11 @@
-037e09c4bbca9f83df79bea2738a7411 *DESCRIPTION
+5f50880fd58afebf2ffb320f6f28ce94 *DESCRIPTION
 a902793ebbfcda6e1bb9ad9e09dc23f6 *LICENSE
 a4f6e806f58121a5702eb28238db0e5f *NAMESPACE
-a83ef4b3f4b9361c14b5895360d26314 *NEWS.md
+418864bd1da68bf186ee10eef167067c *NEWS.md
 61e04f87eaf213e380a6d608dc11ee4f *R/sk.R
 1b0473ece0a13b84909810443a779c58 *R/sk_estim.R
 21f2e7d8a26714d80808b313d946f3c1 *R/sk_export.R
-45c817aff7134e63f252ae99c8898277 *R/sk_index.R
+54db5d480cdfe57578ff4ce1741e5377 *R/sk_index.R
 03fb8835cc0bbdd3f128e71f5d0f8795 *R/sk_methods.R
 711fc0b3fcb956cdeaf5f6f70dd80932 *R/sk_model.R
 7965c2cb91acccb2b5b55cde85f10557 *R/sk_pars.R
@@ -13,11 +13,11 @@ ae7d8b77e80bae87ce9870232c9fcb4d *R/sk_plot.R
 287a6387eb503aa1ecaa30336a415c92 *R/sk_sample.R
 64cca24de3ffc18d0563483dd1fb16bd *R/sk_var.R
 117cc1a322a572569729d5b66765fc97 *R/snapKrig.R
-00dd6611887487aa99e18b6555b3c272 *README.md
-95b39d6d52c34aefcaf366dcad3fa28f *build/vignette.rds
+69ca3267ce16fbcf99a151b26d216267 *README.md
+ab967d7c7ee257b02c3320c3f26434ab *build/vignette.rds
 8cb89143d9afc2c68ffcdd7ec36e093f *inst/doc/snapKrig_introduction.R
 c42f8cd1aac77d5e968e4557398c54ad *inst/doc/snapKrig_introduction.Rmd
-277141b38cf44e215533d6befdb36c8b *inst/doc/snapKrig_introduction.html
+44fd6e5275d3d044b83b599ec2581bb0 *inst/doc/snapKrig_introduction.html
 3a2b74f94cd346e8abca6c3b33ffed5a *man/Math.sk.Rd
 1c3815154ade310d5c0b064ba2b2487d *man/Ops.sk.Rd
 fe3f3f9b0b51907cbe1ec6512edb188f *man/anyNA.sk.Rd
@@ -32,7 +32,7 @@ d8ce95638e572405434b61c06d3debe4 *man/figures/README-intro_down_plot-1.png
 d5d04488fbc38952eb252007d90a78e0 *man/figures/README-intro_sim-1.png
 044df66057f641fea053407f984d7739 *man/figures/README-intro_sim_plot-1.png
 719f2339e6c3bf1ed791404d5e49c450 *man/figures/README-pressure-1.png
-0047ffeb664b74fe7d81d47ac708cd39 *man/figures/README-preview-1.png
+00482b9e8d71c7c217c06562b26e375f *man/figures/README-preview-1.png
 85add2d1d169922158e5181a6e81de50 *man/is.na.sk.Rd
 d98b782c3aa0ec5c5fda1ff72b8ce051 *man/length.sk.Rd
 2f88ec53cd7828892b11f967a0732820 *man/mean.sk.Rd
@@ -64,8 +64,8 @@ be0624bdae2b8d9dba4209945dcb5a86 *man/sk_sample_pt.Rd
 7af88bfa093c5c393f6d305b8df716e8 *man/sk_sample_vg.Rd
 365c718fda8dad1d2acf6bb60e3dd8f5 *man/sk_sim.Rd
 9cd47951202b5bd3626cd6914d207229 *man/sk_snap.Rd
-38bb0f5e034ced6ce97af1cfae90a755 *man/sk_sub.Rd
-074d4da3345200a90e5f0e2cf0fc4df1 *man/sk_sub_find.Rd
+ebd3b69980163d068a643316d02f036e *man/sk_sub.Rd
+465fe3c09d4e905fc0784f197ef9737b *man/sk_sub_find.Rd
 2e71c390aa1ab6f5cf94f6362d61b18f *man/sk_sub_idx.Rd
 6f813e8d91c7fb0d8c421fee5db57e3f *man/sk_to_string.Rd
 ff3e5bdb151cec85a098d337b3f81cab *man/sk_toep_mult.Rd
@@ -80,6 +80,6 @@ fe33a75e47045f420c41de6923081145 *man/sub-sub-.sk-set.Rd
 b201abece6c9eee46c7f8cfbbc712fae *man/summary.sk.Rd
 b162bdbbfb0bef75f455400003ac53b7 *tests/testthat.R
 6acebece266584dc1ad99bf0a76e3d59 *tests/testthat/test-sk.R
-d87240fb1cfd3a721c2a5f4e66aa12bc *tests/testthat/test-sk_index.R
+1f6273685abfc0e781d687719af9733e *tests/testthat/test-sk_index.R
 2c92318152bb0951785776b312bdcce5 *tests/testthat/test-sk_var.R
 c42f8cd1aac77d5e968e4557398c54ad *vignettes/snapKrig_introduction.Rmd

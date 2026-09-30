@@ -379,6 +379,7 @@ sk_sub_idx = function(gdim, ij=NULL, idx=FALSE, nosort=FALSE)
 #'
 #' One of `idx_keep` or `idx_rem` (but not both) can be specified, and the grid line numbers
 #' (not intercepts) should be supplied in ascending order in list entries named "i" and "j".
+#' If your selection results in an empty grid, the function returns `NULL`
 #'
 #' If `idx_rem` is specified, `mirror=TRUE` will cause the selection in `idx_rem` to be
 #' reflected about the central grid line (useful for specifying outer grid lines). `mirror`
@@ -482,8 +483,8 @@ sk_sub = function(g, ij_keep=NULL, ij_rem=NULL, idx=FALSE, mirror=FALSE)
     ij_keep = Map(function(d, i) seq(d)[!(seq(d) %in% i)], d=gdim, i=ij_rem)
     gdim_new = sapply(ij_keep, length)
 
-    # another validity check
-    if( any( gdim_new < 1 ) ) stop('request resulted in an empty sub-grid')
+    # another validity check with soft landing
+    if( any( gdim_new < 1 ) ) return(NULL)
 
     # assign names lost in the `Map` calls and sort the removed grid lines
     names(ij_keep) = ij_nm
@@ -558,7 +559,11 @@ sk_sub = function(g, ij_keep=NULL, ij_rem=NULL, idx=FALSE, mirror=FALSE)
 #' A sub-grid is only eligible if it contains ALL of the non-`NA` points in `g` and none
 #' of the `NA`s. For example if a single point missing from the sub-grid, or a single non-`NA`
 #' point lies outside the sub-grid, the function will fail to detect any sub-grids and return
-#' `NULL`. If no points are `NA`, the function returns indices for the full grid.
+#' `NULL`.
+#'
+#' If no points in `g` are `NA`, the function returns indices for the full grid.
+#' If `g` has <= 1 non-`NA` points, the function returns `NULL` (1x1 subgrids
+#' are not supported.)
 #'
 #' The returned list contains the following named elements:
 #'
@@ -594,8 +599,8 @@ sk_sub = function(g, ij_keep=NULL, ij_rem=NULL, idx=FALSE, mirror=FALSE)
 #' plot(g_big)
 #' print(sk_sub_find(g_big))
 #'
-#' # define a smaller sub-grid at random
-#' spacing = sapply(floor(gdim/10), function(x) 1 + sample.int(x, 1))
+#' # define a smaller sub-grid
+#' spacing = c(5, 4)
 #' gdim_sg = sapply(floor( (gdim - 1) / spacing), function(x) sample.int(x, 1))
 #' ij_first = sapply(gdim - ( spacing * gdim_sg ), function(x) sample.int(x, 1))
 #'
@@ -651,6 +656,9 @@ sk_sub_find = function(g, gdim=NULL)
   # need this to get indices of first, second, and last elements in sub-grid
   idx_obs = which(g)
   n_obs = sum(g)
+
+  # 1x1 subgrids not supported
+  if (n_obs == 1) return(NULL)
 
   # find the dimensions of the smallest sub-grid enclosing all observed points
   ij_bbox = sk_vec2mat(c(idx_obs[1], idx_obs[n_obs]), gdim)
